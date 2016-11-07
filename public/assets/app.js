@@ -42,19 +42,64 @@ app.controller('SignInController', ['$rootscope', function ($rootScope)]{
 		this.messages = [
 			{
 				message: 'You did it!',
-				address: '123 Fake St'
+				address: '123 Fake St',
+				weddingInfo = [
+					{
+						date: 'January 5, 2018'
+						invited: 208
+						time: '7 a.m.'
+						location: 'Botanical Gardens'
+						letter: 'You ' + user.firstName + ' ' + user.lastName + 
+						' ' + 'are invited to' + ' ' + user.weddingName;
+						rvsp:
+					}
+				]
 			},
 			{
 				message: 'Congrats sweetie!',
 				address: '456 Fake St'
+				weddingInfo = [
+					{
+						date: 'January 5, 2018'
+						invited: 208
+						time: '7 a.m.'
+						location: 'Botanical Gardens'
+						letter: 'You ' + user.firstName + ' ' + user.lastName + 
+						' ' + 'are invited to' + ' ' + user.weddingName;
+						rvsp:
+					}
+				]
+
 			},
 			{
 				message: 'So glad to spend this special day with you!',
 				address: '789 Fake St'
+				weddingInfo = [
+					{
+						date: 'January 5, 2018'
+						invited: 208
+						time: '7 a.m.'
+						location: 'Botanical Gardens'
+						letter: 'You ' + user.firstName + ' ' + user.lastName + 
+						' ' + 'are invited to' + ' ' + user.weddingName;
+						rvsp:
+					}
+				]
 			},
 			{
 				message: 'You two are perfect for each other',
 				address: '999 Fake St'
+				weddingInfo = [
+					{
+						date: 'January 5, 2018'
+						invited: 208
+						time: '7 a.m.'
+						location: 'Botanical Gardens'
+						letter: 'You ' + user.firstName + ' ' + user.lastName + 
+						' ' + 'are invited to' + ' ' + user.weddingName;
+						rvsp:
+					}
+				]
 			}
 		];
 
@@ -66,3 +111,8 @@ app.controller('SignInController', ['$rootscope', function ($rootScope)]{
 		}
 	});
 })();
+
+
+
+
+

@@ -1,6 +1,6 @@
 
 <!DOCTYPE html>
-<html ng-app="weddingGuestBook">
+<html ng-app="guestbook">
 <head>
   <!-- Compiled and minified CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet"><!-- Compiled and minified JavaScript -->
@@ -17,10 +17,7 @@
       	<!-- https://pixabay.com/en/wedding-wedding-ring-marriage-ring-1335649/ -->
         <li><img alt="My Guest Book Logo" class="ringsIcon" src="assets/img/rings.png" title="My Guest Book Logo"></li>
         <li>
-          <a class="myGuestBookSize" href="index.html">My Guest Book</a>
-        </li>
-        <li>
-          <a class="myGuestBookSize" href="badges.html">Entries</a>
+          <a class="myGuestBookSize" href="">My Guest Book</a>
         </li>
       </ul>
     </div>
@@ -34,7 +31,7 @@
       <div ng-controller="SignInController as signin" ng-hide="loggedIn">
         <div class="col s12 m4">
           <div class="icon-block">
-            <!-- E.g.: Icon made by Roundicons from www.flaticon.com  -->
+            <!-- Icon made by Roundicons from www.flaticon.com  -->
           </div>
           <img alt="formIcon" id="FormICon" src="assets/img/formIcon.png" title="formIcon">
         </div>
@@ -50,28 +47,66 @@
       </div>
       <div class="container center" ng-controller="enteredInfoController as enteredInfo" ng-show="loggedIn">
         <div class="section containerBottom">
-          <section id="main"></section>
+<!--    <section id="main"></section> -->
           <div class="col s12 m4">
           <div class="icon-block">
             <!-- E.g.: Icon made by Roundicons from www.flaticon.com  -->
           </div><img alt="formIcon" id="FormICon" src="assets/img/formIcon.png" title="formIcon"></div>
           <h5 class="center enterYourInfoHere">Enter your information here</h5><br>
-          <form id="" name="">
-            Address:<br>
-            <input name="address" type="text" value="address"><br>
-            Message:<br>
-            <textarea class="materialize-textarea" name="message"></textarea> <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
+          <form ng-submit="messageCtrl.addMessage()">
+          	<label>
+            	Message:<br>
+            	<textarea  ng-model="messageCtrl.newMessage.message" class="materialize-textarea" name="message"></textarea>
+            </label>
+            <label>
+            	Address:<br>
+            	<input ng-model="messageCtrl.newMessage.address" name="address" type="text" value="address"><br>
+            </label>
+            <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
           </form>
         </div>
         <div class="row center" id="result"></div>
       </div>
     </div>
-    <div></div>
+    <!-- MY TABS-->
+    <div ng-controller="TabController as tabCtrl">
+     <div class="tabs">
+     	<div class="tab" ng-click="tabCtrl.showTab(1)">Addresses</div>
+     	<div class="tab" ng-click="tabCtrl.showTab(2)">Messages</div>
+     	<div class="tab" ng-click="tabCtrl.showTab(3)">Wedding Info</div>
+     </div>
+     <section class="addresses" ng-show="tabCtrl.isShown(1)">
+     	<h1>Addresses</h1>
+     </section>
+     <section class="messages" ng-show="tabCtrl.isShown(2)" ng-controller="MessageController as messageCtrl">
+     	<h1>Messages</h1>
+     </section>
+     <section class="weddingInfo" ng-show="tabCtrl.isShown(3)" ng-controller="MessageController as messageCtrl">
+     	<h1>Wedding Info</h1>
+     </section>
+     	<ul>
+     		<li ng-repeat="message in messageCtrl.messages track by $index">
+     			<p><strong>{{messages.message}}</strong></p>
+     			<p>{{messages.address}}</p>
+     			<p>{{messages.weddingInfo}}</p>
+     		</li>
+     	</ul>
+     </section>
+    </div>
   </div>
   <!-- Login Form Ends -->
   <footer class="pageFooter">
     <div class="container" id="footer">
-      © 2016 Copyright Rose Koenings
+    	© 2016 Copyright Rose Koenings
+    </div>
+    <div class="footerSource">
+    	nav icon source: https://pixabay.com/en/wedding-wedding-ring-marriage-ring-1335649
+    	<br>
+    	Banner picture source: by Nathan Walker on https://unsplash.com/photos/m5lNqXBBIy0
+    	<br>
+    	form icon source: Icon made by Roundicons from www.flaticon.com
+    	<br>
+    	<br>
     </div>
     <script src="assets/app.js" type="text/javascript">
     </script>

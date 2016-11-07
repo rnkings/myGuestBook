@@ -51,7 +51,50 @@ app.post('/submit/weddingGuestFormInfo', function (req, res) {
   });
 });
 
- app.listen(3001, function () {
-   console.log('See this website at localhost:3000');
+
+
+
+ //get messages to tab
+
+app.get('/view', function (req, res) {
+  var id = req.query.id;
+  db.any('SELECT * FROM "guestBookEntry" WHERE "guestBookEntryID" AND "message" = $1, $2, $3' [fristName, lastName, message])
+    .then(function (result) {
+      res.send(result);
+    }).catch(function (error) {
+      res.status(500).send('Error selecting from DB');
+    });
+});
+
+ //get addresses to tab
+app.get('/view', function (req, res) {
+  var id = req.query.id;
+  db.any('SELECT * FROM "guestBookEntry" WHERE "guestBookEntryID" AND "address" = $1, $2, $3' [firstName, lastName, address])
+    .then(function (result) {
+      res.send(result);
+    }).catch(function (error) {
+      res.status(500).send('Error selecting from DB');
+    });
+});
+
+//get wedding info
+
+app.get('/view', function (req, res) {
+  var id = req.query.id;
+  db.any('SELECT * FROM "invatation" WHERE "invationID" = $1, $2, $3, $4' [invitedDate, weddingTime, weddingLetter, rsvp])
+  db.any('SELECT * FROM "wedding" WHERE "weddingID = $1, $2, $3' [weddingName, weddingDate, location])
+    .then(function (result) {
+      res.send(result);
+    }).catch(function (error) {
+      res.status(500).send('Error selecting from DB');
+    });
+});
+
+
+
+
+
+  app.listen(3001, function () {
+   console.log('See this website at localhost:3001');
  });
 

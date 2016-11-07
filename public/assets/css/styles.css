@@ -88,6 +88,14 @@ html{
 	margin-bottom: 48px;
 }
 
+.footerSource{
+	font-size:8px;
+	color:white;
+	margin-left:800px;
+	margin: auto 0;
+	text-align: center;
+	opacity: .4;
+}
 
 
 
