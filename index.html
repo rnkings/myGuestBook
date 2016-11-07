@@ -70,6 +70,16 @@
 	        	<section class="other" ng-show="tabCtrl.isShown(1)">
 	        		<h1>Other Tab</h1>
 	        	</section>
+	        	<section class="messages" ng-show="tabCtrl.isShown(2)" ng-controller="MessageController as messageCtrl">
+	        		<h1>Messages</h1>
+	        		<ul>
+	        			<li ng-repeat="message in messageCtrl.messages track by $index">
+	        				<p><strong>{{message.message}}</strong></p>
+	        				<p>{{message.address}}</p>
+	        			</li>
+	        		</ul>
+	        		<hr>
+	        		<h2>New Message</h2>
 
 	    </div>
 <!-- Form End -->
