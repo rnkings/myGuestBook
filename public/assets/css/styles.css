@@ -1,3 +1,5 @@
+
+
 .ringsIcon{
 	width:50px;
 	margin-top: 5px;
@@ -26,6 +28,7 @@ nav{
 	background-color: #4abc96; 
 	position:fixed;
 	margin-top:-5px;
+	z-index: 100;
 }
 .nav>li>a{
 /*    position: relative;*/
@@ -84,3 +87,8 @@ html{
 	margin-top: 48px;
 	margin-bottom: 48px;
 }
+
+
+
+
+
