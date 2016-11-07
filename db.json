@@ -1,0 +1,7 @@
+{
+	"host": "localhost",
+	"user": "rose",
+	"password": "secret",
+	"port": "5432",
+	"database": "wedding"
+}
