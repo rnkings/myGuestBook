@@ -64,6 +64,12 @@
 	            <div class="row center" id="result"></div>
 	          </div>
 	        </div>
+	        <div class="tabs">
+	        	<div class="tab" ng-click="tabCtrl.showTab(1)">Other</div>
+	        	<div class="tab" ng-click="tabCtrl.showTab(2)">Messages</div>
+	        	<section class="other" ng-show="tabCtrl.isShown(1)">
+	        		<h1>Other Tab</h1>
+	        	</section>
 
 	    </div>
 <!-- Form End -->
