@@ -20,24 +20,55 @@ app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
 // **********saving new messages, addresses and first and last name
 // *********from guest book form
 
-app.post('/submit/weddingGuestFormInfo', function (req, res) {
+app.post('/submit/signInForm', function (req, res) {
   var params = {
     firstname: req.body.firstname,
-    lastname: req.body.lastname,
-    addres: req.body.address,
-    message: req.body.message
+    lastname: req.body.lastname
   };
 
-  var boundParams = {
-    userId: 1,
-    weddingName: 'Johnson',
-    params: JSON.stringify(params)
+  console.log(req.body);
+  console.log(req.query);
+
+  console.log('making query');
+  db.one(
+  	'SELECT * FROM "user" WHERE "firstName" = ${firstname} AND "lastName" = ${lastname}',
+  	params
+  ).then(function (user) {
+    var weddingParams = {
+  	  weddingName: req.body.weddingname,
+  	  userID: user.userID
+    };
+  	return db.one(
+	  'SELECT "wedding".* FROM "wedding" INNER JOIN "invitation" ON ("wedding"."weddingID" = "invitation"."weddingID") WHERE "invitation"."userID" = ${userID} AND "wedding"."weddingName" = ${weddingName}',
+	  weddingParams
+	).then(function (wedding) {
+	  res.send({
+	  	user: user,
+	  	wedding: wedding
+	  });
+	});
+  }).catch(function (error) {
+  	console.error(error);
+  	res.status(404).send("Error with the database select. " + JSON.stringify(error));
+  });
+});
+
+// **********saving new messages, addresses and first and last name
+// *********from guest book form
+
+app.post('/submit/weddingGuestFormInfo', function (req, res) {
+  var params = {
+    address: req.body.address,
+    message: req.body.message,
+    weddingID: req.body.weddingID,
+    firstname: req.body.firstname,
+    lastname: req.body.lastname
   };
 
   console.log('making query');
   db.query(
-    'INSERT INTO guestBookEntry ("firstName", "lastName", "address", "message") VALUES (${firstName}, ${lastName}, ${address}, $(message)) RETURNING "guestBookEntryID"', 
-    boundParams
+    'INSERT INTO "guestBookEntry" ("address", "message", "weddingID", "firstName", "lastName") VALUES (${address}, ${message}, ${weddingID}, ${firstname}, ${lastname}) RETURNING "guestBookEntryID"', 
+    params
   ).then(function (data) {
       console.log(data);
       var id = data[0].guestBookEntryID;
@@ -53,25 +84,13 @@ app.post('/submit/weddingGuestFormInfo', function (req, res) {
 
 
 
-
  //get messages to tab
 
-app.get('/view', function (req, res) {
-  var id = req.query.id;
-  db.any('SELECT * FROM "guestBookEntry" WHERE "guestBookEntryID" AND "message" = $1, $2, $3' [fristName, lastName, message])
-    .then(function (result) {
-      res.send(result);
-    }).catch(function (error) {
-      res.status(500).send('Error selecting from DB');
-    });
-});
-
- //get addresses to tab
-app.get('/view', function (req, res) {
-  var id = req.query.id;
-  db.any('SELECT * FROM "guestBookEntry" WHERE "guestBookEntryID" AND "address" = $1, $2, $3' [firstName, lastName, address])
-    .then(function (result) {
-      res.send(result);
+app.get('/guestBookEntries', function (req, res) {
+  var id = req.query.weddingID;
+  db.any('SELECT * FROM "guestBookEntry" WHERE "weddingID" = $1', [id])
+    .then(function (results) {
+      res.send(results);
     }).catch(function (error) {
       res.status(500).send('Error selecting from DB');
     });
@@ -79,22 +98,22 @@ app.get('/view', function (req, res) {
 
 //get wedding info
 
-app.get('/view', function (req, res) {
-  var id = req.query.id;
-  db.any('SELECT * FROM "invatation" WHERE "invationID" = $1, $2, $3, $4' [invitedDate, weddingTime, weddingLetter, rsvp])
-  db.any('SELECT * FROM "wedding" WHERE "weddingID = $1, $2, $3' [weddingName, weddingDate, location])
-    .then(function (result) {
-      res.send(result);
-    }).catch(function (error) {
-      res.status(500).send('Error selecting from DB');
-    });
+app.get('/invitations', function (req, res) {
+  var id = req.query.weddingID;
+  db.any('SELECT * FROM "invitation" WHERE "invitationID" = $1', [id])
+  	.then(function (results) {
+  		res.send(results);
+  	}).catch(function (error) {
+  		console.error(error);
+  		res.status(500).send('Error selecting from DB');
+  	});
 });
 
 
 
 
 
-  app.listen(3001, function () {
-   console.log('See this website at localhost:3001');
- });
+app.listen(3001, function () {
+  console.log('See this website at localhost:3001');
+});
 
