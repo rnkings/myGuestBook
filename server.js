@@ -31,25 +31,25 @@ app.post('/submit/signInForm', function (req, res) {
 
   console.log('making query');
   db.one(
-  	'SELECT * FROM "user" WHERE "firstName" = ${firstname} AND "lastName" = ${lastname}',
-  	params
+    'SELECT * FROM "user" WHERE "firstName" = ${firstname} AND "lastName" = ${lastname}',
+    params
   ).then(function (user) {
     var weddingParams = {
-  	  weddingName: req.body.weddingname,
-  	  userID: user.userID
+      weddingName: req.body.weddingname,
+      userID: user.userID
     };
-  	return db.one(
-	  'SELECT "wedding".* FROM "wedding" INNER JOIN "invitation" ON ("wedding"."weddingID" = "invitation"."weddingID") WHERE "invitation"."userID" = ${userID} AND "wedding"."weddingName" = ${weddingName}',
-	  weddingParams
-	).then(function (wedding) {
-	  res.send({
-	  	user: user,
-	  	wedding: wedding
-	  });
-	});
+    return db.one(
+    'SELECT "wedding".* FROM "wedding" INNER JOIN "invitation" ON ("wedding"."weddingID" = "invitation"."weddingID") WHERE "invitation"."userID" = ${userID} AND "wedding"."weddingName" = ${weddingName}',
+    weddingParams
+  ).then(function (wedding) {
+    res.send({
+      user: user,
+      wedding: wedding
+    });
+  });
   }).catch(function (error) {
-  	console.error(error);
-  	res.status(404).send("Error with the database select. " + JSON.stringify(error));
+    console.error(error);
+    res.status(404).send("Error with the database select. " + JSON.stringify(error));
   });
 });
 
@@ -101,12 +101,12 @@ app.get('/guestBookEntries', function (req, res) {
 app.get('/invitations', function (req, res) {
   var id = req.query.weddingID;
   db.any('SELECT * FROM "invitation" WHERE "invitationID" = $1', [id])
-  	.then(function (results) {
-  		res.send(results);
-  	}).catch(function (error) {
-  		console.error(error);
-  		res.status(500).send('Error selecting from DB');
-  	});
+    .then(function (results) {
+      res.send(results);
+    }).catch(function (error) {
+      console.error(error);
+      res.status(500).send('Error selecting from DB');
+    });
 });
 
 
