@@ -14,6 +14,11 @@ app.run(
 );
 
 app.service('DataService', function () {
+	this.user = {};
+	this.wedding = {};
+	this.entries = [];
+	this.invitations = [];
+
 	this.setUser = function (user) {
 		this.user = user;
 	};
@@ -30,6 +35,10 @@ app.service('DataService', function () {
 		return this.wedding;
 	};
 
+	this.newEntry = function (entry) {
+		this.entries.push(entry);
+	};
+
 	this.setGuestBookEntries = function (entries) {
 		this.entries = entries;
 	};
@@ -41,6 +50,16 @@ app.service('DataService', function () {
 	this.setInvitations = function (invitations) {
 		this.invitations = invitations;
 	};
+
+	this.getNumberRsvp = function (rsvp){
+		var count = 0;
+		this.getInvitations().forEach(function (invitation) {
+			if (invitation.rsvp) {
+				count++;
+			}
+		});
+		return count;
+	}
 
 	this.getInvitations = function () {
 		return this.invitations;
@@ -102,12 +121,11 @@ app.controller('SignInController', ['DataService', '$http', '$scope', '$rootScop
 
 // Below is creating tabs, if they are shown and fake hard coded message info
 
-app.controller('TabController', ['DataService', '$scope', function (DataService, $scope) {
-	this.tab = 2;
 
-	$scope.invitations = DataService.getInvitations();
-	$scope.entries = DataService.getGuestBookEntries();
-	$scope.wedding = DataService.getWedding();
+app.controller('TabController', ['DataService', '$scope', function (DataService, $scope) {
+	this.tab = 1;
+
+	this.service = DataService;
 
 	this.showTab = function (tab) {
 		this.tab = tab;
@@ -128,8 +146,9 @@ app.controller('EnteredInfoController', ['$http', '$scope', 'DataService', funct
 			message: $scope.message,
 			firstname: user.firstName,
 			lastname: user.lastName,
-			wedddingID: wedding.weddingID
+			weddingID: wedding.weddingID
 		};
+		// console.log(message);
 		// var newMessage = $scope.newMessage;
 
 		$http({
@@ -137,8 +156,8 @@ app.controller('EnteredInfoController', ['$http', '$scope', 'DataService', funct
 			url: '/submit/weddingGuestFormInfo',
 			data: data
 		})
-		.then(function(data){
-			console.log(data);
+		.then(function(response){
+			DataService.newEntry(response.data);
 		})
 		.catch(function(err){
 			console.error(err);

@@ -67,15 +67,11 @@ app.post('/submit/weddingGuestFormInfo', function (req, res) {
 
   console.log('making query');
   db.query(
-    'INSERT INTO "guestBookEntry" ("address", "message", "weddingID", "firstName", "lastName") VALUES (${address}, ${message}, ${weddingID}, ${firstname}, ${lastname}) RETURNING "guestBookEntryID"', 
+    'INSERT INTO "guestBookEntry" ("address", "message", "weddingID", "firstName", "lastName") VALUES (${address}, ${message}, ${weddingID}, ${firstname}, ${lastname}) RETURNING *', 
     params
   ).then(function (data) {
       console.log(data);
-      var id = data[0].guestBookEntryID;
-      res.send({
-        status: 'success',
-        id: id
-      });
+      res.send(data[0]);
   }).catch(function (error) {
     console.log(error);
     res.status(500).send("Error with the database insert. " + JSON.stringify(error));

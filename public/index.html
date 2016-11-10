@@ -72,26 +72,63 @@
     <!-- MY TABS-->
     <div ng-controller="TabController as tabCtrl">
       <div class="tabs">
-        <div class="tab" ng-click="tabCtrl.showTab(1)">Addresses</div>
-        <div class="tab" ng-click="tabCtrl.showTab(2)">Messages</div>
-        <div class="tab" ng-click="tabCtrl.showTab(3)">Wedding Info</div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(1)">Guestbook | </div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(2)">Notes | </div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(3)">Addresses | </div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(4)">Invites | </div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(5)">Wedding</div>
       </div>
-      <section class="addresses" ng-show="tabCtrl.isShown(1)">
-        <h1>Addresses</h1>
+      <section class="weddingGuestInfo" ng-show="tabCtrl.isShown(1)">
+        <h5>Guestbook</h5>
+        <ul>
+          <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
+              <hr>
+              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
+              <p><strong>Address:</strong> {{message.address}}</p>
+              <p><strong>Message:</strong> {{message.message}}</p>
+          </li>
+        </ul>
       </section>
       <section class="messages" ng-show="tabCtrl.isShown(2)">
-        <h1>Messages</h1>
+        <h5>Messages</h5>
+        <ul>
+          <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
+              <hr>
+              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
+              <p><strong>Message:</strong> {{message.message}}</p>
+          </li>
+        </ul>
       </section>
-      <section class="weddingInfo" ng-show="tabCtrl.isShown(3)">
-        <h1>Wedding Info</h1>
+      <section class="addresses" ng-show="tabCtrl.isShown(3)">
+        <h5>addresses</h5>
+        <ul>
+          <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
+              <hr>
+              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
+              <p><strong>Address:</strong> {{message.address}}</p>
+          </li>
+        </ul>
       </section>
-      <ul>
-        <li ng-repeat="message in messageCtrl.messages track by $index">
-          <p><strong>{{messages.message}}</strong></p>
-          <p>{{messages.address}}</p>
-          <p>{{messages.weddingInfo}}</p>
-        </li>
-      </ul>
+      <section class="weddingInfo" ng-show="tabCtrl.isShown(4)">
+        <h5>Wedding Info</h5>
+        <ul>
+          <li ng-repeat="message in tabCtrl.service.getInvitations()">
+              <p><strong>Invitation:</strong> {{message.weddingLetter}}</p>
+          </li>
+        </ul>
+      </section>
+      <section class="weddingInfo" ng-show="tabCtrl.isShown(5)">
+        <h5>Wedding Info</h5>
+        <ul>
+          <li>
+              <p><strong>Date:</strong> {{tabCtrl.service.getWedding().date}}</p>
+              <p><strong>Location:</strong> {{tabCtrl.service.getWedding().location}}</p>
+              <p><strong>Time:</strong> {{tabCtrl.service.getWedding().time}}</p>
+              <p><strong>Number Invited:</strong> {{tabCtrl.service.getWedding().numberInvited}}</p>
+              <p><strong>Number Rsvp:</strong> {{tabCtrl.service.getNumberRsvp().count}}</p>
+          </li>
+        </ul>
+      </section>
     </div>
   </section>
 </div>
