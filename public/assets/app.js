@@ -59,7 +59,7 @@ app.service('DataService', function () {
 			}
 		});
 		return count;
-	}
+	};
 
 	this.getInvitations = function () {
 		return this.invitations;
