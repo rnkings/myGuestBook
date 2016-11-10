@@ -5,7 +5,7 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
   <!-- Compiled and minified JavaScript -->
   <link href="assets/css/styles.css" media="screen,projection" rel="stylesheet" type="text/css">
-  <link href="https://fonts.googleapis.com/css?family=Tillana" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Princess+Sofia|Sofia" rel="stylesheet">
   <title>My Guest Book</title>
 </head>
 <body>
@@ -35,11 +35,19 @@
       </div>
       <h5 class="center enterYourInfoHere">Login Here</h5><br>
       <form id="" name="" ng-submit="signin.login()">
-        First Name:<br>
-        <input name="firstname" ng-model="firstname" type="text" value="Rose"><br>
-        Last Name:<br>
-        <input name="lastname" ng-model="lastname" type="text" value="Koenings"> Wedding Name:<br>
-        <input name="weddingname" ng-model="weddingname" type="text" value="Johnson">
+        <label class= "formTextSize" >
+          First Name:<br>
+          <input name="firstname" ng-model="firstname" type="text" value="Rose">
+        </label>
+          <br>
+        <label class= "formTextSize">
+          Last Name:<br>
+          <input name="lastname" ng-model="lastname" type="text" value="Koenings"> 
+        </label>
+        <label class= "formTextSize">
+          Wedding Name:<br>
+          <input name="weddingname" ng-model="weddingname" type="text" value="Johnson">
+        </label>
         <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
       </form>
     </div>
