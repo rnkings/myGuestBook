@@ -83,7 +83,7 @@ app.post('/submit/weddingGuestFormInfo', function (req, res) {
       } else {
         //TODO insert it
         return db.one(
-          'INSERT INTO "guestBookEntry" ("address", "message", "weddingID", "firstName", "lastName") VALUES ($1, $2, $3, $4, $5) RETURNING *'
+          'INSERT INTO "guestBookEntry" ("address", "message", "weddingID", "firstName", "lastName") VALUES ($1, $2, $3, $4, $5) RETURNING *',
           [address, message, weddingID, firstName, lastName]
         );
       }
