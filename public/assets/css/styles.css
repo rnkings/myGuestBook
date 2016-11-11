@@ -115,6 +115,16 @@ html{
 	background-color: #7175c9;
 }
 
+.btn:focus, .btn-large:focus, .btn-floating:focus {
+	background-color: #5850a0;
+}
+
+
+textarea.materialize-textarea:focus:not([readonly]) {
+	border-bottom: 1px solid #7175c9;
+    box-shadow: 0 1px 0 0 #7175c9;
+}
+
 input[type=text]:focus:not([readonly]){
 	border-bottom: 1px solid #7175c9;
     box-shadow: 0 1px 0 0 #7175c9;
@@ -127,6 +137,19 @@ input[type=text]:focus:not([readonly]){
 #formTextSize{
 	font-size: 23px;
 }
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
+	background-color:#7175c9;
+}
+
+[type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:before, [type="radio"].with-gap:checked+label:after {
+	border: none;
+}
+
+
+
+
+
 
 
 

@@ -161,6 +161,12 @@ app.controller('TabController', ['DataService', '$scope', function (DataService,
 	this.isShown = function (tab) {
 		return this.tab === tab;
 	};
+
+	this.getFormattedDateString = function (date) {
+		var dateObj = new Date(date);
+
+		return dateObj.toDateString();
+	}
 }]);
 
 app.controller('EnteredInfoController', ['$http', '$scope', 'DataService', function ($http, $scope, DataService) {

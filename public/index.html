@@ -139,7 +139,7 @@
         <h5>Wedding Info</h5>
         <ul>
           <li>
-              <p><strong>Date:</strong> {{tabCtrl.service.getWedding().weddingDate}}</p>
+              <p><strong>Date:</strong> {{tabCtrl.getFormattedDateString(tabCtrl.service.getWedding().weddingDate)}}</p>
               <p><strong>Location:</strong> {{tabCtrl.service.getWedding().location}}</p>
               <p><strong>Time:</strong> {{tabCtrl.service.getWedding().time}}</p>
               <p><strong>Number Invited:</strong> {{tabCtrl.service.getWedding().numberInvited}}</p>
