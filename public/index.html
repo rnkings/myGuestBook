@@ -61,7 +61,7 @@
             <!-- E.g.: Icon made by Roundicons from www.flaticon.com  -->
           </div>
           <img alt="formIcon" class="formIcon" src="assets/img/formIcon.png" title="formIcon"></div>
-        <h5 class="center enterYourInfoHere">Enter your information here</h5><br>
+        <h5 class="center enterYourInfoHere">Leave a note for the love birds</h5><br>
         <form ng-submit="enteredInfoCtl.addMessage()">
           <label class="formTextSize">
             Message:<br>
@@ -72,6 +72,14 @@
             Address:<br>
             <input ng-model="address" id="formTextSize" name="address" type="text" value="address"><br>
           </label>
+          <p>
+            <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-yes" ng-value="true" />
+            <label for="rsvp-yes">Going</label>
+          </p>
+          <p>
+            <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-no" ng-value="false" />
+            <label for="rsvp-no">Not Going</label>
+          </p>
           <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
         </form>
       </div>
@@ -118,10 +126,12 @@
         </ul>
       </section>
       <section class="weddingInfo" ng-show="tabCtrl.isShown(4)">
-        <h5>Wedding Info</h5>
+        <h5>Invitations</h5>
         <ul>
           <li ng-repeat="message in tabCtrl.service.getInvitations()">
               <p><strong>Invitation:</strong> {{message.weddingLetter}}</p>
+              <p><strong>Name:</strong> {{message.user.firstName + ' ' + message.user.lastName}}</p>
+              <p><strong>RSVP:</strong> {{message.rsvp == null ? 'Waiting for Response' : (message.rsvp ? 'Yes' : 'No')}}</p>
           </li>
         </ul>
       </section>
@@ -133,7 +143,7 @@
               <p><strong>Location:</strong> {{tabCtrl.service.getWedding().location}}</p>
               <p><strong>Time:</strong> {{tabCtrl.service.getWedding().time}}</p>
               <p><strong>Number Invited:</strong> {{tabCtrl.service.getWedding().numberInvited}}</p>
-              <p><strong>Number Rsvp:</strong> {{tabCtrl.service.getNumberRsvp().count}}</p>
+              <p><strong>Number Rsvp:</strong> {{tabCtrl.service.getNumberRsvp()}}</p>
           </li>
         </ul>
       </section>

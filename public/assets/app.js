@@ -35,8 +35,35 @@ app.service('DataService', function () {
 		return this.wedding;
 	};
 
-	this.newEntry = function (entry) {
-		this.entries.push(entry);
+	this.newEntry = function (newEntry) {
+		var found = false;
+		var entries = this.entries.map(function (entry) {
+			if (entry.guestBookEntryID === newEntry.guestBookEntryID) {
+				found = true;
+				return newEntry;
+			}
+			return entry;
+		});
+		if (!found) {
+			entries.push(newEntry);
+		}
+
+		this.entries = entries;
+	};
+
+	this.updateRSVP = function (userID, weddingID, rsvp) {
+		var invitations = this.invitations.map(function (invitation) {
+			console.log(invitation);
+			if (invitation.weddingID === weddingID && invitation.userID === userID) {
+				console.log(invitation.rsvp);
+				invitation.rsvp = rsvp;
+				console.log('Found it!!!');
+				console.log(invitation.rsvp);
+			}
+			return invitation;
+		});
+
+		this.invitations = invitations;
 	};
 
 	this.setGuestBookEntries = function (entries) {
@@ -54,12 +81,12 @@ app.service('DataService', function () {
 	this.getNumberRsvp = function (rsvp){
 		var count = 0;
 		this.getInvitations().forEach(function (invitation) {
-			if (invitation.rsvp) {
+			if (invitation.rsvp !== null) {
 				count++;
 			}
 		});
 		return count;
-	};
+	}
 
 	this.getInvitations = function () {
 		return this.invitations;
@@ -141,13 +168,19 @@ app.controller('EnteredInfoController', ['$http', '$scope', 'DataService', funct
 		var user = DataService.getUser();
 		var wedding = DataService.getWedding();
 
+		var rsvp = $scope.rsvp ? true : false;
+		console.log(rsvp);
+
 		var data = {
 			address: $scope.address,
 			message: $scope.message,
 			firstname: user.firstName,
 			lastname: user.lastName,
-			weddingID: wedding.weddingID
+			weddingID: wedding.weddingID,
+			rsvp: rsvp,
+			userID: user.userID
 		};
+
 		// console.log(message);
 		// var newMessage = $scope.newMessage;
 
@@ -158,6 +191,7 @@ app.controller('EnteredInfoController', ['$http', '$scope', 'DataService', funct
 		})
 		.then(function(response){
 			DataService.newEntry(response.data);
+			DataService.updateRSVP(user.userID, wedding.weddingID, rsvp);
 		})
 		.catch(function(err){
 			console.error(err);
