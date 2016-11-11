@@ -37,16 +37,16 @@
       <form id="" name="" ng-submit="signin.login()">
         <label class= "formTextSize" >
           First Name:<br>
-          <input name="firstname" ng-model="firstname" type="text" value="Rose">
+          <input id="formTextSize" name="firstname" ng-model="firstname" type="text" value="Rose">
         </label>
           <br>
         <label class= "formTextSize">
           Last Name:<br>
-          <input name="lastname" ng-model="lastname" type="text" value="Koenings"> 
+          <input id="formTextSize" name="lastname" ng-model="lastname" type="text" value="Koenings"> 
         </label>
         <label class= "formTextSize">
           Wedding Name:<br>
-          <input name="weddingname" ng-model="weddingname" type="text" value="Johnson">
+          <input id="formTextSize" name="weddingname" ng-model="weddingname" type="text" value="Johnson">
         </label>
         <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
       </form>
@@ -63,14 +63,14 @@
           <img alt="formIcon" class="formIcon" src="assets/img/formIcon.png" title="formIcon"></div>
         <h5 class="center enterYourInfoHere">Enter your information here</h5><br>
         <form ng-submit="enteredInfoCtl.addMessage()">
-          <label>
+          <label class="formTextSize">
             Message:<br>
-            <textarea ng-model="message" class="materialize-textarea"
+            <textarea ng-model="message" class="materialize-textarea" id="formTextSize"
                       name="message"></textarea>
           </label>
-          <label>
+          <label class="formTextSize">
             Address:<br>
-            <input ng-model="address" name="address" type="text" value="address"><br>
+            <input ng-model="address" id="formTextSize" name="address" type="text" value="address"><br>
           </label>
           <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
         </form>

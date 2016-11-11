@@ -121,9 +121,12 @@ input[type=text]:focus:not([readonly]){
 }
 
 .formTextSize{
-	font-size: 20px;
+	font-size: 26px;
 }
 
+#formTextSize{
+	font-size: 23px;
+}
 
 
 
