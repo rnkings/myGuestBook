@@ -117,6 +117,7 @@ app.controller('SignInController', ['DataService', '$http', '$scope', '$rootScop
 			self.loadInvitationData();
 		}).catch(function (error) {
 			console.error(error);
+			document.getElementById("error").innerHTML = "Sorry you have not been approved for this wedding yet or the wedding has not yet been created!";
 		});
 		// $rootScope.loggedIn = true;
 	};
