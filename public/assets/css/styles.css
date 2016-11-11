@@ -40,7 +40,7 @@ nav{
 
 
 .myGuestBookSize{
-	font-size: 18px;
+	font-size: 23px;
 }
 
 #form{
@@ -87,11 +87,11 @@ html{
 .enterYourInfoHere{
 	margin-top: 48px;
 	margin-bottom: 48px;
-	font-size: 50px;
+	font-size: 40px;
 }
 
 .footerSource{
-	font-size:8px;
+	font-size:14px;
 	color:white;
 	margin-left:800px;
 	margin: auto 0;
@@ -146,11 +146,35 @@ input[type=text]:focus:not([readonly]){
 	border: none;
 }
 
+.tabHeaderSize{
+	font-size: 40px;
+}
+
+.radioButtonSize{
+	font-size: 60px;
+}
 
 
+[type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
+	font-size:20px;
+}
 
+textarea.materialize-textarea{
+	padding:0px;
+}
 
+.radioButton{
+	margin-top:30px;
+	margin-bottom:30px;
+}
 
+li{
+	font-size: 25px;
+}
 
-
+.key{
+	font-size: 30px;
+	font-weight: bold;
+	color:#7175c9;
+}
 

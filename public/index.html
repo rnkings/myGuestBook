@@ -6,6 +6,7 @@
   <!-- Compiled and minified JavaScript -->
   <link href="assets/css/styles.css" media="screen,projection" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Princess+Sofia|Sofia" rel="stylesheet">
+  <link rel="icon" href="assets/img/formIcon.png"/>
   <title>My Guest Book</title>
 </head>
 <body>
@@ -72,14 +73,14 @@
             Address:<br>
             <input ng-model="address" id="formTextSize" name="address" type="text" value="address"><br>
           </label>
-          <p>
-            <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-yes" ng-value="true" />
-            <label for="rsvp-yes">Going</label>
-          </p>
-          <p>
-            <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-no" ng-value="false" />
-            <label for="rsvp-no">Not Going</label>
-          </p>
+          <div class="container center" class="radioButton">
+            <label class="formTextSize">RSVP :
+            </label>
+              <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-yes" ng-value="true" />
+              <label for="rsvp-yes">Going</label>
+              <input class="formTextSize" name="rsvp" type="radio" ng-model="rsvp" id="rsvp-no" ng-value="false" />
+              <label for="rsvp-no">Not Going</label>
+          </div>
           <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
         </form>
       </div>
@@ -88,62 +89,64 @@
     <!-- MY TABS-->
     <div ng-controller="TabController as tabCtrl">
       <div class="tabs">
-        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(1)">Guestbook | </div>
+        <div class="tab tabFontSize" ng-click="tabCtrl.showTab(1)">Book | </div>
         <div class="tab tabFontSize" ng-click="tabCtrl.showTab(2)">Notes | </div>
         <div class="tab tabFontSize" ng-click="tabCtrl.showTab(3)">Addresses | </div>
         <div class="tab tabFontSize" ng-click="tabCtrl.showTab(4)">Invites | </div>
         <div class="tab tabFontSize" ng-click="tabCtrl.showTab(5)">Wedding</div>
       </div>
       <section class="weddingGuestInfo" ng-show="tabCtrl.isShown(1)">
-        <h5>Guestbook</h5>
+        <p class="tabHeaderSize">Guestbook</p>
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
-              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
-              <p><strong>Address:</strong> {{message.address}}</p>
-              <p><strong>Message:</strong> {{message.message}}</p>
+              <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
+              <p><span class="key">Address : </span> {{message.address}}</p>
+              <p><span class="key">Message : </span> {{message.message}}</p>
           </li>
         </ul>
       </section>
       <section class="messages" ng-show="tabCtrl.isShown(2)">
-        <h5>Messages</h5>
+        <p class="tabHeaderSize">Messages</p>
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
-              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
-              <p><strong>Message:</strong> {{message.message}}</p>
+              <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
+              <p><span class="key">Message : </span> {{message.message}}</p>
           </li>
         </ul>
       </section>
       <section class="addresses" ng-show="tabCtrl.isShown(3)">
-        <h5>addresses</h5>
+        <p class="tabHeaderSize">Addresses</p>
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
-              <p><strong>Name:</strong> {{message.firstName}} {{message.lastName}}</p>
-              <p><strong>Address:</strong> {{message.address}}</p>
+              <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
+              <p><span class="key">Address : </span> {{message.address}}</p>
           </li>
         </ul>
       </section>
       <section class="weddingInfo" ng-show="tabCtrl.isShown(4)">
-        <h5>Invitations</h5>
+        <p class="tabHeaderSize">Invitations</p>
         <ul>
           <li ng-repeat="message in tabCtrl.service.getInvitations()">
-              <p><strong>Invitation:</strong> {{message.weddingLetter}}</p>
-              <p><strong>Name:</strong> {{message.user.firstName + ' ' + message.user.lastName}}</p>
-              <p><strong>RSVP:</strong> {{message.rsvp == null ? 'Waiting for Response' : (message.rsvp ? 'Yes' : 'No')}}</p>
+          <hr>
+              <p><span class="key">Invitation : </span> {{message.weddingLetter}}</p>
+              <p><span class="key">Name : </span> {{message.user.firstName + ' ' + message.user.lastName}}</p>
+              <p><span class="key">RSVP : </span> {{message.rsvp == null ? 'Waiting for Response' : (message.rsvp ? 'Yes' : 'No')}}</p>
           </li>
         </ul>
       </section>
       <section class="weddingInfo" ng-show="tabCtrl.isShown(5)">
-        <h5>Wedding Info</h5>
+        <p class="tabHeaderSize">Wedding Info</p>
+        <hr>
         <ul>
           <li>
-              <p><strong>Date:</strong> {{tabCtrl.getFormattedDateString(tabCtrl.service.getWedding().weddingDate)}}</p>
-              <p><strong>Location:</strong> {{tabCtrl.service.getWedding().location}}</p>
-              <p><strong>Time:</strong> {{tabCtrl.service.getWedding().time}}</p>
-              <p><strong>Number Invited:</strong> {{tabCtrl.service.getWedding().numberInvited}}</p>
-              <p><strong>Number Rsvp:</strong> {{tabCtrl.service.getNumberRsvp()}}</p>
+              <p><span class="key">Date : </span> {{tabCtrl.getFormattedDateString(tabCtrl.service.getWedding().weddingDate)}}</p>
+              <p><span class="key">Location : </span> {{tabCtrl.service.getWedding().location}}</p>
+              <p><span class="key">Time : </span> {{tabCtrl.service.getWedding().time}}</p>
+              <p><span class="key">Number Invited : </span> {{tabCtrl.service.getWedding().numberInvited}}</p>
+              <p><span class="key">Number Rsvp : </span> {{tabCtrl.service.getNumberRsvp()}}</p>
           </li>
         </ul>
       </section>
@@ -156,11 +159,13 @@
     © 2016 Copyright Rose Koenings
   </div>
   <div class="footerSource">
-    nav icon source: https://pixabay.com/en/wedding-wedding-ring-marriage-ring-1335649
+    form icon and favicon source: Jenny Ensslin
     <br>
     Banner picture source: by Nathan Walker on https://unsplash.com/photos/m5lNqXBBIy0
     <br>
-    form icon source: Icon made by Roundicons from www.flaticon.com
+    nav icon source: https://pixabay.com/en/wedding-wedding-ring-marriage-ring-1335649
+    <br>
+    Materalize css was used for this app
     <br>
     <br>
   </div>
