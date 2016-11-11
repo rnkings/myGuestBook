@@ -74,7 +74,7 @@
             Address:<br>
             <input ng-model="address" id="formTextSize" name="address" type="text" value="address"><br>
           </label>
-          <div class="container center" class="radioButton">
+          <div class="container center radioButton">
             <label class="formTextSize">RSVP :
             </label>
               <input name="rsvp" type="radio" ng-model="rsvp" id="rsvp-yes" ng-value="true" />
@@ -101,9 +101,11 @@
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
+              <br>
               <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
               <p><span class="key">Address : </span> {{message.address}}</p>
               <p><span class="key">Message : </span> {{message.message}}</p>
+              <br>
           </li>
         </ul>
       </section>
@@ -112,8 +114,10 @@
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
+              <br>
               <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
               <p><span class="key">Message : </span> {{message.message}}</p>
+              <br>
           </li>
         </ul>
       </section>
@@ -122,8 +126,10 @@
         <ul>
           <li ng-repeat="message in tabCtrl.service.getGuestBookEntries()">
               <hr>
+              <br>
               <p><span class="key">Name : </span> {{message.firstName}} {{message.lastName}}</p>
               <p><span class="key">Address : </span> {{message.address}}</p>
+              <br>
           </li>
         </ul>
       </section>
@@ -132,15 +138,18 @@
         <ul>
           <li ng-repeat="message in tabCtrl.service.getInvitations()">
           <hr>
+              <br>
               <p><span class="key">Invitation : </span> {{message.weddingLetter}}</p>
               <p><span class="key">Name : </span> {{message.user.firstName + ' ' + message.user.lastName}}</p>
               <p><span class="key">RSVP : </span> {{message.rsvp == null ? 'Waiting for Response' : (message.rsvp ? 'Yes' : 'No')}}</p>
+              <br>
           </li>
         </ul>
       </section>
       <section class="weddingInfo" ng-show="tabCtrl.isShown(5)">
         <p class="tabHeaderSize">Wedding Info</p>
         <hr>
+        <br>
         <ul>
           <li>
               <p><span class="key">Date : </span> {{tabCtrl.getFormattedDateString(tabCtrl.service.getWedding().weddingDate)}}</p>
@@ -148,6 +157,7 @@
               <p><span class="key">Time : </span> {{tabCtrl.service.getWedding().time}}</p>
               <p><span class="key">Number Invited : </span> {{tabCtrl.service.getWedding().numberInvited}}</p>
               <p><span class="key">Number Rsvp : </span> {{tabCtrl.service.getNumberRsvp()}}</p>
+              <br>
           </li>
         </ul>
       </section>
