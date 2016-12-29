@@ -1,6 +1,5 @@
 
-
-.ringsIcon{
+.ringsIcon {
 	width:50px;
 	margin-top: 5px;
 	margin-left:25px;
@@ -8,8 +7,7 @@
 	border:0;
 }
 
-#footer{
-/*	overflow: hidden;*/
+#footer {
     height: 50px;
     line-height: 50px;
     text-align:center;
@@ -18,44 +16,39 @@
     width:100%;
 }
 
-.pageFooter{
+.pageFooter {
 	background-color: #6559a2; 
 	margin-top: 20px;
     padding-top: 20px;
 }
 
-nav{
+nav {
 	background-color: #6559a2; 
 	position:fixed;
 	margin-top:-5px;
 	z-index: 100;
 }
-.nav>li>a{
-/*    position: relative;*/
+.nav>li>a {
     display: block;
     padding: 10px 15px;
     list-style: none;
     margin-right:200px;
 }
 
-
-.myGuestBookSize{
+.myGuestBookSize {
 	font-size: 23px;
 }
 
-#form{
+#form {
   	margin:0 auto;
   	text-align:center;
   	width:100%;
-
 }
-
 
 .btn{
 	background-color: #6559a2; 
 	margin-top: 40px;
 	margin-bottom: 30px;
-
 }
 
 #banner {
@@ -66,31 +59,29 @@ nav{
     background-size: cover;
     margin-top: -27px;
 }
-.shadow{
+
+.shadow {
 	text-shadow: -1px 2px 12px #000;
-/*	color: #009d6c; */
 	color: white;
 	font-size:60px;
 }
 
-.myGuestBookTextPadding{
+.myGuestBookTextPadding {
 	padding-top:200px;
-
 }
 
-html{
+html {
 	font-family: 'Princess Sofia', cursive;
 	font-family: 'Sofia', cursive;
-
 }
 
-.enterYourInfoHere{
+.enterYourInfoHere {
 	margin-top: 48px;
 	margin-bottom: 48px;
 	font-size: 40px;
 }
 
-.footerSource{
+.footerSource {
 	font-size:14px;
 	color:white;
 	margin-left:800px;
@@ -99,11 +90,10 @@ html{
 	opacity: .4;
 }
 
-.tabFontSize{
+.tabFontSize { 
 	font-size: 15px;
 	font-weight:2000;
 }
-
 
 .formIcon{
 	margin-top: 30px;
@@ -125,16 +115,16 @@ textarea.materialize-textarea:focus:not([readonly]) {
     box-shadow: 0 1px 0 0 #7175c9;
 }
 
-input[type=text]:focus:not([readonly]){
+input[type=text]:focus:not([readonly]) {
 	border-bottom: 1px solid #7175c9;
     box-shadow: 0 1px 0 0 #7175c9;
 }
 
-.formTextSize{
+.formTextSize {
 	font-size: 26px;
 }
 
-#formTextSize{
+#formTextSize {
 	font-size: 23px;
 }
 
@@ -146,50 +136,38 @@ input[type=text]:focus:not([readonly]){
 	border: none;
 }
 
-.tabHeaderSize{
+.tabHeaderSize {
 	font-size: 40px;
 }
 
-.radioButtonSize{
+.radioButtonSize {
 	font-size: 60px;
 }
-
 
 [type="radio"]:not(:checked)+label, [type="radio"]:checked+label {
 	font-size:20px;
 }
 
-textarea.materialize-textarea{
+textarea.materialize-textarea {
 	padding:0px;
 }
 
-.radioButton{
+.radioButton {
 	margin-top:30px;
 	margin-bottom:30px;
 }
 
-li{
+li {
 	font-size: 25px;
 }
 
-.key{
+.key {
 	font-size: 30px;
 	font-weight: bold;
 	color:#7175c9;
 }
 
-.errorStyles{
+.errorStyles {
 	color:red;
 	font-size:25px;
-
 }
-
-
-
-
-
-
-
-
-
-

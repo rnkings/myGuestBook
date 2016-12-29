@@ -1,36 +1,32 @@
 <!DOCTYPE html>
 <html ng-app="guestbook">
 <head>
-  <!-- Compiled and minified CSS -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.8/css/materialize.min.css" rel="stylesheet">
-  <!-- Compiled and minified JavaScript -->
   <link href="assets/css/styles.css" media="screen,projection" rel="stylesheet" type="text/css">
   <link href="https://fonts.googleapis.com/css?family=Princess+Sofia|Sofia" rel="stylesheet">
-  <link rel="icon" href="assets/img/formIcon.png"/>
+  <!-- Icon made by Roundicons from www.flaticon.com  -->
+  <link rel="icon" href="assets/img/rings.png"/>
   <title>My Guest Book</title>
 </head>
 <body>
 <nav>
   <div class="nav-wrapper">
     <ul class="left" id="nav-mobile">
-      <!-- https://pixabay.com/en/wedding-wedding-ring-marriage-ring-1335649/ -->
       <li><img alt="My Guest Book Logo" class="ringsIcon" src="assets/img/rings.png" title="My Guest Book Logo"></li>
       <li>
         <a class="myGuestBookSize" href="">My Guest Book</a>
       </li>
     </ul>
   </div>
-</nav><!-- Banner Start -->
+</nav>
 <div id="banner">
   <h1 class="center shadow myGuestBookTextPadding">My Guest Book</h1>
-</div><!-- Banner End -->
-<!-- Form Start -->
+</div>
 <div class="container center">
   <div class="section containerBottom">
     <div ng-controller="SignInController as signin" ng-hide="loggedIn">
       <div class="col s12 m4">
         <div class="icon-block">
-          <!-- Icon made by Roundicons from www.flaticon.com  -->
         </div>
         <img alt="formIcon" class="formIcon" src="assets/img/formIcon.png" title="formIcon">
       </div>
@@ -38,16 +34,16 @@
       <form id="" name="" ng-submit="signin.login()">
         <label class= "formTextSize" >
           First Name:<br>
-          <input id="formTextSize" name="firstname" ng-model="firstname" type="text" placeholder="Type in 'Pippin'">
+          <input id="formTextSize" name="firstname" ng-model="firstname" type="text" placeholder=" Type in 'Pippin'">
         </label>
           <br>
         <label class= "formTextSize">
           Last Name:<br>
-          <input id="formTextSize" name="lastname" ng-model="lastname" type="text" placeholder="Type in 'Koenings'"> 
+          <input id="formTextSize" name="lastname" ng-model="lastname" type="text" placeholder=" Type in 'Koenings'"> 
         </label>
         <label class= "formTextSize">
           Wedding Name:<br>
-          <input id="formTextSize" name="weddingname" ng-model="weddingname" type="text" placeholder="Type in 'Johnson'">
+          <input id="formTextSize" name="weddingname" ng-model="weddingname" type="text" placeholder=" Type in 'Johnson'">
         </label>
         <div class="errorStyles" id="error"></div>
         <button class="btn-large waves-effect waves-light btn" id="template1-submit" type="submit">Send</button>
@@ -57,10 +53,8 @@
   <section class="logged-in" ng-show="loggedIn">
     <div class="container center" ng-controller="EnteredInfoController as enteredInfoCtl">
       <div class="section containerBottom">
-        <!--    <section id="main"></section> -->
         <div class="col s12 m4">
           <div class="icon-block">
-            <!-- E.g.: Icon made by Roundicons from www.flaticon.com  -->
           </div>
           <img alt="formIcon" class="formIcon" src="assets/img/formIcon.png" title="formIcon"></div>
         <h5 class="center enterYourInfoHere">Leave a note for the love birds</h5><br>
@@ -87,7 +81,6 @@
       </div>
       <div class="row center" id="result"></div>
     </div>
-    <!-- MY TABS-->
     <div ng-controller="TabController as tabCtrl">
       <div class="tabs">
         <div class="tab tabFontSize" ng-click="tabCtrl.showTab(1)">Book | </div>
@@ -156,7 +149,6 @@
               <p><span class="key">Location : </span> {{tabCtrl.service.getWedding().location}}</p>
               <p><span class="key">Time : </span> {{tabCtrl.service.getWedding().time}}</p>
               <p><span class="key">Number Invited : </span> {{tabCtrl.service.getWedding().numberInvited}}</p>
-<!--               <p><span class="key">Number Rsvp : </span> {{tabCtrl.service.getNumberRsvp()}}</p> -->
               <br>
           </li>
         </ul>
@@ -164,7 +156,6 @@
     </div>
   </section>
 </div>
-<!-- Login Form Ends -->
 <footer class="pageFooter">
   <div class="container" id="footer">
     © 2016 Copyright Rose Koenings
