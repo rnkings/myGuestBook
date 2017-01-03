@@ -8,7 +8,7 @@
 }
 
 #footer {
-    height: 50px;
+    height: 60px;
     line-height: 50px;
     text-align:center;
     color: rgba(255,255,255,0.8); 
@@ -36,7 +36,7 @@ nav {
 }
 
 .myGuestBookSize {
-	font-size: 23px;
+	font-size: 29px;
 }
 
 #form {
@@ -48,16 +48,29 @@ nav {
 .btn{
 	background-color: #6559a2; 
 	margin-top: 40px;
-	margin-bottom: 30px;
+	margin-bottom: 110px;
 }
 
 #banner {
 /* This photo was taken by Nathan Walker on the site https://unsplash.com/photos/m5lNqXBBIy0*/
-    background:url('../img/banner.jpg');
+    background:url('../img/weddingBanner.jpg');
     max-width:100%;
     min-height: 450px;
     background-size: cover;
     margin-top: -27px;
+}
+
+
+@media (max-width: 2560px) {
+#banner {
+    min-height: 600px;
+	}
+}
+
+@media (max-width: 1024px) {
+#banner {
+    min-height: 500px;
+	}
 }
 
 .shadow {
@@ -70,6 +83,18 @@ nav {
 	padding-top:200px;
 }
 
+@media (max-width: 2560px){
+	.myGuestBookTextPadding {
+		padding-top: 290px;
+	}
+}
+
+@media (max-width: 1024px){
+	.myGuestBookTextPadding {
+		padding-top: 230px;
+	}
+}
+
 html {
 	font-family: 'Princess Sofia', cursive;
 	font-family: 'Sofia', cursive;
@@ -77,7 +102,7 @@ html {
 
 .enterYourInfoHere {
 	margin-top: 48px;
-	margin-bottom: 48px;
+	margin-bottom: 60px;
 	font-size: 40px;
 }
 
@@ -121,11 +146,12 @@ input[type=text]:focus:not([readonly]) {
 }
 
 .formTextSize {
-	font-size: 26px;
+	font-size: 35px;
 }
 
 #formTextSize {
-	font-size: 23px;
+	font-size: 26px;
+	text-align: center;
 }
 
 [type="radio"]:checked+label:after, [type="radio"].with-gap:checked+label:after {
@@ -158,7 +184,7 @@ textarea.materialize-textarea {
 }
 
 li {
-	font-size: 25px;
+	font-size: 35px;
 }
 
 .key {
@@ -170,4 +196,8 @@ li {
 .errorStyles {
 	color:red;
 	font-size:25px;
+}
+
+input:not([type]), input[type=text], input[type=password], input[type=email], input[type=url], input[type=time], input[type=date], input[type=datetime], input[type=datetime-local], input[type=tel], input[type=number], input[type=search], textarea.materialize-textarea {
+    height: 90px;
 }
