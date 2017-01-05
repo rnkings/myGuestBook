@@ -136,7 +136,7 @@ nav {
 
 @media (max-width: 1440px) {
 	.myGuestBookTextPadding {
-    	padding-top: 320px;
+    	padding-top: 220px;
 	}
 }
 
@@ -335,7 +335,7 @@ input:not([type]), input[type=text], input[type=password], input[type=email], in
 
 @media (max-width: 1440px) {
 	#banner {
-   		min-height: 650px;
+   		min-height: 450px;
 	}
 }
 
